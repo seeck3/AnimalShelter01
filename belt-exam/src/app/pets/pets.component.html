@@ -1,0 +1,31 @@
+<h3>These pets are looking for a home!</h3>
+
+<a routerLink='/pets/new'>Add a pet to the Shelter</a>
+
+<section>
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </thead>
+
+
+    <!-- /books/dksldkslsl -->
+
+    <tbody>
+      <tr *ngFor='let pet of pets'>
+        <!-- <tr *ngFor='let pet of pets'> -->
+        <td>{{ pet?.name }}</td>
+        <td>{{ pet?.type }}</td>
+        <td (click)='onEvent($event)'>
+          <button [routerLink]='pet._id'>Detail</button>
+          <button [routerLink]="['/pets', 'edit', pet._id ]">Edit</button>
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</section>

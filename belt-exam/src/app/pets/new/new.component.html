@@ -1,0 +1,59 @@
+<fieldset>
+  <legend>Create Pet</legend>
+
+  <!-- <div *ngIf='errors.length'>
+    <ul class='alert alert-danger'>
+      <li *ngFor='let error of errors'>{{error}}</li>
+    </ul>
+
+  </div> -->
+
+  <form (submit)='onSubmit($event, form)' #form='ngForm'>
+    <div>
+      <label for="">Pet Name :</label>
+      <input type="text" name="name" [(ngModel)]='pet.name' #name='ngModel' minlength="3" required>
+      <!-- <div class="error" *ngIf='name.invalid && (name.dirty || name.touched)'> -->
+      <div>
+        <div *ngIf='name?.errors?.required'>Name is required</div>
+        <div *ngIf='name?.errors?.minlength'>Name must be at least 3 characters</div>
+      </div>
+    </div>
+    <div>
+      <label for="">Pet Type :</label>
+      <input type="text" name="type" [(ngModel)]='pet.type' #type='ngModel' required minlength="3">
+      <!-- <div class="error" *ngIf='type.invalid && (type.dirty || type.touched)'> -->
+      <div>
+        <div *ngIf='type?.errors?.required'>Type is required</div>
+        <div *ngIf='type?.errors?.minlength'>Type must be at least 3 characters</div>
+      </div>
+    </div>
+    <div>
+      <label for="">Description :</label>
+      <input type="text" name="description" [(ngModel)]='pet.description' #description='ngModel' required minlength="3">
+      <!-- <div class="error" *ngIf='description.invalid && (description.dirty || description.touched)'> -->
+      <div>
+        <div *ngIf='description?.errors?.required'>Description is required</div>
+        <div *ngIf='description?.errors?.minlength'>Description must be at least 3 characters</div>
+      </div>
+    </div>
+    <div>
+      <label for="">Skills :</label>
+      <br>
+      <label for="">Skill 1:</label>
+      <input type="text" name="skill01" [(ngModel)]='pet.skill01'>
+    </div>
+    <div>
+      <label for="">Skill 2:</label>
+      <input type="text" name="skill02" [(ngModel)]='pet.skill02'>
+    </div>
+    <div>
+      <label for="">Skill 3:</label>
+      <input type="text" name="skill03" [(ngModel)]='pet.skill03'>
+    </div>
+    <input type="hidden" name="likes" [(ngModel)]="pet.likes" value="0">
+    <!-- you can use [disabled]='form.invalid' or [hidden]='form.invalid' -->
+    <!-- to prevent hacker, using *ngIf='form.valid' is better -->
+    <button class='btn'>Submit</button>
+  </form>
+  <button class='btn' [routerLink]='["/pets"]'>Cancel</button>
+</fieldset>

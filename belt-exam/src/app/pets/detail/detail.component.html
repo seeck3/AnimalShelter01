@@ -1,0 +1,19 @@
+<section>
+  <a class=btn routerLink='/'>Home</a>
+  <fieldset>
+    <legend>About {{ pet?.name }}</legend>
+    <div>
+      <p>Type: {{ pet?.type }}</p>
+      <p>Description: {{ pet?.description }}</p>
+      <p>Skills: {{ pet?.skill01 }}, {{ pet?.skill02 }}, {{ pet?.skill03 }}</p>
+      <p>Likes: {{ pet?.likes }}</p>
+      <!-- <input type="hidden" name='likes' [(ngModel)]="pet.likes"> -->
+
+      <button class='btn btn-warning' [disabled]="isDisabled" (click)='onLike(pet._id)'>Like This Pet</button>
+      <!-- <button class='btn btn-warning' [routerLink]="['/pets', 'like', pet?._id ]">Like This Pet!!</button> -->
+
+
+      <button class='btn btn-warning' (click)='onDelete(pet._id)'>Adopt this Pet!</button>
+    </div>
+  </fieldset>
+</section>
